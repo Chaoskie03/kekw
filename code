@@ -1,0 +1,1213 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+
+        int payment;
+        int choice, Room;
+        int subprice;
+        int price, totprice, Nodays1, disc;
+        double lastprice, totalprice;
+        bool loop = true;
+
+        while (loop)
+        {
+            try
+            {
+                Console.WriteLine("|============================================|");
+                Console.WriteLine("|                                            |");
+                Console.WriteLine("|              HOTEL RESERVATION             |");
+                Console.WriteLine("|                                            |");
+                Console.WriteLine("|============================================|");
+                Console.WriteLine("");
+                Console.Write("GUEST NAME:");
+                string name = Console.ReadLine();
+                Console.WriteLine("Hello! " + name);
+                Console.WriteLine(" ");
+                Console.WriteLine("|============================================|");
+                Console.WriteLine("| No.  Room type    Price    No. of Days     | ");
+                Console.WriteLine("| [1]   Single    4000 PHP        3          |");
+                Console.WriteLine("| [2]   Double    4500 PHP        3          |");
+                Console.WriteLine("| [3]   Deluxe    8000 PHP        3          |");
+                Console.WriteLine("| [4]   Suite    12000 PHP        3          |");
+                Console.WriteLine("|============================================|");
+                Console.WriteLine("");
+
+                do
+                {
+                    Console.Write("Room type: ");
+                    choice = Convert.ToInt32(Console.ReadLine());
+                    if (choice < 1 || choice > 4)
+                    {
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|---------- Error Please Try again ----------|");
+                        Console.WriteLine("|============================================|");
+                    }
+                } while (choice < 1 || choice > 4);
+                switch (choice)
+                {
+                    case 1:
+                        string opt1 = "Single";
+
+                        Console.WriteLine("Room Type: " + opt1);
+                        Console.WriteLine(" ");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|-----------|--Choose Room Number--|---------|");
+                        Console.WriteLine("|    101    |   102    |    103    |   104   |");
+                        Console.WriteLine("|-----------|----------------------|---------|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Enter Room No.: ");
+                            Room = Convert.ToInt32(Console.ReadLine());
+                            if (Room > 104 || Room < 101)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (Room >= 105 || Room <= 100);
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|×××××××× Aditional 200 PHP per day ×××××××××|");
+                        Console.WriteLine("|×××××××××××× If more than 3 Days ×××××××××××|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Number of Days: ");
+                            Nodays1 = Convert.ToInt32(Console.ReadLine());
+                            subprice = Nodays1 - 3;
+                            int sup = 200;
+                            price = subprice * sup;
+                            totprice = price + 4000;
+                            if (Nodays1 > 2)
+                            {
+                                Console.Write("");
+                            }
+                            if (Nodays1 < 3)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (Nodays1 < 3);
+                        Console.Write("Number of Childs: ");
+                        string chi = Console.ReadLine();
+                        Console.Write("Number of Adults: ");
+                        string ad = Console.ReadLine();
+
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|---REGULAR----SENIOR-----HOLIDAYS----CARD---|");
+                        Console.WriteLine("|----(0%)------(20%)-------(10%)------(5%)---|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|     [1]       [2]         [3]       [4]    |");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Discount Type: ");
+                            disc = Convert.ToInt32(Console.ReadLine());
+                            if (disc < 1 || disc > 4)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (disc < 1 || disc > 4);
+                        if (disc == 1)
+                        {
+                            Console.WriteLine("Sub Total: " + totprice);
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - totprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine(" Guest Name: " + name);
+                                    Console.WriteLine(" Room Type: Single ");
+                                    Console.WriteLine(" Room Price: 4000");
+                                    Console.WriteLine(" Room Number: " + Room);
+                                    Console.WriteLine(" Number of Days: " + Nodays1);
+                                    Console.WriteLine(" Additional Fees per Day: " + price);
+                                    Console.WriteLine(" Number of Children: " + chi);
+                                    Console.WriteLine(" Number of Adults: " + ad);
+
+                                    Console.WriteLine(" Payment: " + payment);
+                                    Console.WriteLine(" Change: " + totalprice);
+                                    Console.WriteLine(" Total: " + totprice);
+
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("|            Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                            Console.WriteLine("");
+                        }
+                        if (disc == 2)
+                        {
+                            double discount = totprice * 0.20;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Single ");
+                                    Console.WriteLine("Room Price: 4000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: SENIOR");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 3)
+                        {
+                            double discount = totprice * 0.10;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Single ");
+                                    Console.WriteLine("Room Price: 4000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: HOLIDAYS");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 4)
+                        {
+                            double discount = totprice * 0.05;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Single ");
+                                    Console.WriteLine("Room Price: 4000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: CARD");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        Console.WriteLine();
+                        break;
+
+                    case 2:
+                        string opt2 = "Double";
+
+                        Console.WriteLine("Room Type: " + opt2);
+                        Console.WriteLine(" ");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|-----------|--Choose Room Number--|---------|");
+                        Console.WriteLine("|    201    |   202    |    203    |   204   |");
+                        Console.WriteLine("|-----------|----------------------|---------|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Enter Room No.: ");
+                            Room = Convert.ToInt32(Console.ReadLine());
+                            if (Room == 201 || Room == 202 || Room == 203 || Room == 204)
+                            {
+                                Console.WriteLine("");
+                            }
+                            if (Room > 204 || Room < 201)
+                            {
+                                Console.WriteLine("Error Please Try again");
+                            }
+                        } while (Room >= 205 || Room <= 200);
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|×××××××× Aditional 400 PHP per day ×××××××××|");
+                        Console.WriteLine("|×××××××××××× If more than 3 Days ×××××××××××|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Number of Days: ");
+                            Nodays1 = Convert.ToInt32(Console.ReadLine());
+                            subprice = Nodays1 - 3;
+                            int sup = 400;
+                            price = subprice * sup;
+                            totprice = price + 4500;
+                            if (Nodays1 > 2)
+                            {
+                                Console.Write(" ");
+                            }
+                            if (Nodays1 < 3)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (Nodays1 < 3);
+                        Console.Write("Number of Childs: ");
+                        chi = Console.ReadLine();
+                        Console.Write("Number of Adults: ");
+                        ad = Console.ReadLine();
+
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|---REGULAR----SENIOR-----HOLIDAYS----CARD---|");
+                        Console.WriteLine("|----(0%)------(20%)-------(10%)------(5%)---|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|     [1]       [2]         [3]       [4]    |");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Discount Type: ");
+                            disc = Convert.ToInt32(Console.ReadLine());
+                            if (disc < 1 || disc > 4)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (disc < 1 || disc > 4);
+                        if (disc == 1)
+                        {
+                            Console.WriteLine("Sub Total: " + totprice);
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - totprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Double ");
+                                    Console.WriteLine("Room Price: 4500");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("Total: " + totprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                            Console.WriteLine("");
+                        }
+                        if (disc == 2)
+                        {
+                            double discount = totprice * 0.20;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Double ");
+                                    Console.WriteLine("Room Price: 4500");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: SENIOR");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 3)
+                        {
+                            double discount = totprice * 0.10;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Double ");
+                                    Console.WriteLine("Room Price: 4500");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: HOLIDAYS");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 4)
+                        {
+                            double discount = totprice * 0.05;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Double ");
+                                    Console.WriteLine("Room Price: 4500");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: CARD");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        Console.WriteLine();
+                        break;
+
+                    case 3:
+                        string opt3 = "Deluxe";
+
+                        Console.WriteLine("Room Type: " + opt3);
+                        Console.WriteLine(" ");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|-----------|--Choose Room Number--|---------|");
+                        Console.WriteLine("|    301    |   302    |    303    |   304   |");
+                        Console.WriteLine("|-----------|----------------------|---------|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Enter Room No.: ");
+                            Room = Convert.ToInt32(Console.ReadLine());
+                            if (Room == 301 || Room == 302 || Room == 303 || Room == 304)
+                            {
+                                Console.WriteLine("");
+                            }
+                            if (Room > 304 || Room < 301)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (Room >= 305 || Room <= 300);
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|×××××××× Aditional 1000 PHP per day ×××××××××|");
+                        Console.WriteLine("|×××××××××××× If more than 3 Days ×××××××××××|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Number of Days: ");
+                            Nodays1 = Convert.ToInt32(Console.ReadLine());
+                            subprice = Nodays1 - 3;
+                            int sup = 1000;
+                            price = subprice * sup;
+                            totprice = price + 8000;
+                            if (Nodays1 > 2)
+                            {
+                                Console.Write(" ");
+                            }
+                            if (Nodays1 < 3)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (Nodays1 < 3);
+                        Console.Write("Number of Childs: ");
+                        chi = Console.ReadLine();
+                        Console.Write("Number of Adults: ");
+                        ad = Console.ReadLine();
+
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|---REGULAR----SENIOR-----HOLIDAYS----CARD---|");
+                        Console.WriteLine("|----(0%)------(20%)-------(10%)------(5%)---|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|     [1]       [2]         [3]       [4]    |");
+                        Console.WriteLine(" ");
+                        do
+                        {
+                            Console.Write("Discount Type: ");
+                            disc = Convert.ToInt32(Console.ReadLine());
+                            if (disc < 1 || disc > 4)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (disc < 1 || disc > 4);
+                        if (disc == 1)
+                        {
+                            Console.WriteLine("Sub Total: " + totprice);
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - totprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Deluxe ");
+                                    Console.WriteLine("Room Price: 8000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("Total: " + totprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                            Console.WriteLine("");
+                        }
+                        if (disc == 2)
+                        {
+                            double discount = totprice * 0.20;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Deluxe ");
+                                    Console.WriteLine("Room Price: 8000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: SENIOR");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 3)
+                        {
+                            double discount = totprice * 0.10;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Deluxe ");
+                                    Console.WriteLine("Room Price: 8000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: HOLIDAYS");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 4)
+                        {
+                            double discount = totprice * 0.05;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Deluxe ");
+                                    Console.WriteLine("Room Price: 8000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: CARD");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        Console.WriteLine();
+                        break;
+                    case 4:
+                        string opt4 = "Suite";
+
+                        Console.WriteLine("Room Type: " + opt4);
+                        Console.WriteLine(" ");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|-----------|--Choose Room Number--|---------|");
+                        Console.WriteLine("|    401    |   402    |    403    |   404   |");
+                        Console.WriteLine("|-----------|----------------------|---------|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Enter Room No.: ");
+                            Room = Convert.ToInt32(Console.ReadLine());
+                            if (Room == 401 || Room == 402 || Room == 403 || Room == 404)
+                            {
+                                Console.WriteLine("");
+                            }
+                            if (Room > 404 || Room < 401)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (Room >= 405 || Room <= 400);
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|×××××××× Aditional 2000 PHP per day ×××××××××|");
+                        Console.WriteLine("|×××××××××××× If more than 3 Days ×××××××××××|");
+                        Console.WriteLine("|                                            |");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Number of Days: ");
+                            Nodays1 = Convert.ToInt32(Console.ReadLine());
+                            subprice = Nodays1 - 3;
+                            int sup = 2000;
+                            price = subprice * sup;
+                            totprice = price + 12000;
+                            if (Nodays1 > 2)
+                            {
+                                Console.Write(" ");
+                            }
+                            if (Nodays1 < 3)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (Nodays1 < 3);
+                        Console.Write("Number of Childs: ");
+                        chi = Console.ReadLine();
+                        Console.Write("Number of Adults: ");
+                        ad = Console.ReadLine();
+
+                        Console.WriteLine("");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|---REGULAR----SENIOR-----HOLIDAYS----CARD---|");
+                        Console.WriteLine("|----(0%)------(20%)-------(10%)------(5%)---|");
+                        Console.WriteLine("|============================================|");
+                        Console.WriteLine("|     [1]       [2]         [3]       [4]    |");
+                        Console.WriteLine("");
+                        do
+                        {
+                            Console.Write("Discount Type: ");
+                            disc = Convert.ToInt32(Console.ReadLine());
+                            if (disc < 1 || disc > 4)
+                            {
+                                Console.WriteLine("|============================================|");
+                                Console.WriteLine("|---------- Error Please Try again ----------|");
+                                Console.WriteLine("|============================================|");
+                            }
+                        } while (disc < 1 || disc > 4);
+                        if (disc == 1)
+                        {
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - totprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Suite ");
+                                    Console.WriteLine("Room Price: 12000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("Total: " + totprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                            Console.WriteLine("");
+                        }
+                        if (disc == 2)
+                        {
+                            double discount = totprice * 0.20;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Price: 12000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: SENIOR");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 3)
+                        {
+                            double discount = totprice * 0.10;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Suite ");
+                                    Console.WriteLine("Room Price: 12000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: HOLIDAYS");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        if (disc == 4)
+                        {
+                            double discount = totprice * 0.05;
+                            lastprice = totprice - discount;
+                            Console.WriteLine("Discount Total: " + discount);
+                            Console.WriteLine("Sub Total: " + lastprice);
+
+                            do
+                            {
+                                Console.Write("Payment: ");
+                                payment = Convert.ToInt32(Console.ReadLine());
+
+                                totalprice = payment - lastprice;
+                                if (totalprice >= 0)
+                                {
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|                   RECEIPT                  |");
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                                            |");
+                                    Console.Write("| Date: ");
+                                    DateTime now = DateTime.Now;
+                                    Console.WriteLine(now.ToString("F"));
+                                    Console.WriteLine("|                                            |");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("Guest Name: " + name);
+                                    Console.WriteLine("Room Type: Suite ");
+                                    Console.WriteLine("Room Price: 12000");
+                                    Console.WriteLine("Room Number: " + Room);
+                                    Console.WriteLine("Number of Days: " + Nodays1);
+                                    Console.WriteLine("Additional Fees per Day: " + price);
+                                    Console.WriteLine("Number of Children: " + chi);
+                                    Console.WriteLine("Number of Adults: " + ad);
+                                    Console.WriteLine("Subtotal: " + totprice);
+                                    Console.WriteLine("Discount Type: CARD");
+                                    Console.WriteLine("Discount Rate: " + discount);
+                                    Console.WriteLine("Discounted Total: " + lastprice);
+                                    Console.WriteLine("Payment: " + payment);
+                                    Console.WriteLine("Change: " + totalprice);
+                                    Console.WriteLine("");
+                                    Console.WriteLine("|============================================|");
+                                    Console.WriteLine("|                  THANK YOU                 |");
+                                    Console.WriteLine("|          FOR BOOKING AT OUR HOTEL          |");
+                                    Console.WriteLine("             Mr./Ms. " + name);
+                                    Console.WriteLine("|              PLEASE COME AGAIN!            |");
+                                    Console.WriteLine("|============================================|");
+                                }
+                                if (totalprice < 0)
+                                {
+                                    Console.WriteLine("Insuficent Balance Please Try Again");
+                                }
+                            } while (totalprice < 0);
+                        }
+                        Console.WriteLine();
+                        break;
+
+                }
+                loop = false;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("|============================================|");
+                Console.WriteLine("|---------- Error Please Try again ----------|");
+                Console.WriteLine("|============================================|");
+            }
+        }
+
+
+    }
+}
